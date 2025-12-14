@@ -3,7 +3,11 @@ import {
 	createSlice,
 	type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { Note, NoteQuery, NotesInput } from "@/types/note";
+import type {
+	Note,
+	NoteQuery,
+	NotesInput,
+} from "@/lib/features/notes/model/noteModel";
 import { notesApi } from "./api";
 
 interface NotesState {

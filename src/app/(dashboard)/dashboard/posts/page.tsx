@@ -28,6 +28,7 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
+import type { Post } from "@/lib/features/posts/model/postModel";
 import {
 	clearError,
 	createPost,
@@ -36,7 +37,6 @@ import {
 	updatePost,
 } from "@/lib/features/posts/slice";
 import type { AppDispatch, RootState } from "@/store/store";
-import type { Post } from "@/types/post";
 
 export default function PostsManagement() {
 	const dispatch = useDispatch<AppDispatch>();

@@ -1,5 +1,9 @@
+import type {
+	Post,
+	PostInput,
+	PostQuery,
+} from "@/lib/features/posts/model/postModel";
 import { httpClient } from "@/lib/http-client";
-import type { Post, PostInput, PostQuery } from "@/types/post";
 
 export class PostApiService {
 	private baseUrl = "/v1/posts";

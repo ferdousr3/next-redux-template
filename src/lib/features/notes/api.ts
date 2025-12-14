@@ -1,5 +1,9 @@
+import type {
+	Note,
+	NoteQuery,
+	NotesInput,
+} from "@/lib/features/notes/model/noteModel";
 import { httpClient } from "@/lib/http-client";
-import type { Note, NoteQuery, NotesInput } from "@/types/note";
 
 export class NotesApiService {
 	private baseUrl = "/v1/notes";

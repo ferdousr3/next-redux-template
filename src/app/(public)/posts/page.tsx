@@ -23,6 +23,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import type { Post } from "@/lib/features/posts/model/postModel";
 import {
 	createPost,
 	deletePost,
@@ -31,7 +32,6 @@ import {
 	updatePost,
 } from "@/lib/features/posts/slice";
 import type { AppDispatch, RootState } from "@/store/store";
-import type { Post } from "@/types/post";
 
 export default function PostsPage() {
 	const dispatch = useDispatch<AppDispatch>();

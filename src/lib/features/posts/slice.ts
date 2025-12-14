@@ -3,7 +3,11 @@ import {
 	createSlice,
 	type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { Post, PostInput, PostQuery } from "@/types/post";
+import type {
+	Post,
+	PostInput,
+	PostQuery,
+} from "@/lib/features/posts/model/postModel";
 import { postApi } from "./api";
 
 // Define Thunks first

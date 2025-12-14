@@ -28,6 +28,7 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
+import type { Note } from "@/lib/features/notes/model/noteModel";
 import {
 	clearError,
 	createNote,
@@ -36,7 +37,6 @@ import {
 	updateNote,
 } from "@/lib/features/notes/slice";
 import type { AppDispatch, RootState } from "@/store/store";
-import type { Note } from "@/types/note";
 
 export default function NotesManagement() {
 	const dispatch = useDispatch<AppDispatch>();
