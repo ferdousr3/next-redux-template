@@ -1,0 +1,24 @@
+E:\React-nextjs\next-redux\next-redux-template\biome.json:10:3 deserialize ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+  ├ù Found an unknown key `ignore`.
+  
+     8 Γöé 	"files": {
+     9 Γöé 		"ignoreUnknown": false,
+  > 10 Γöé 		"ignore": [
+       Γöé 		^^^^^^^^
+    11 Γöé 			"**/*.css",
+    12 Γöé 			".next",
+  
+  i Known keys:
+  
+  - maxSize
+  - ignoreUnknown
+  - includes
+  - experimentalScannerIgnores
+  
+
+configuration ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+  ├ù Biome exited because the configuration resulted in errors. Please fix them.
+  
+
