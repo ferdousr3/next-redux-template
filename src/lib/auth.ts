@@ -54,13 +54,48 @@ export const authOptions: NextAuthOptions = {
 		}),
 	],
 	callbacks: {
-		async jwt({ token, user }: any) {
+		async signIn({ user, account, profile }) {
+			// MOCK API Call to save user to database
+			if (account?.provider === "google" || account?.provider === "github") {
+				console.log("Saving user to database:", {
+					email: user.email,
+					name: user.name,
+					image: user.image,
+					provider: account.provider,
+				});
+				// await authApi.socialLogin({ ... })
+			}
+			return true;
+		},
+		async jwt({ token, user, account }: any) {
 			if (user) {
 				token.accessToken = user.accessToken;
 				token.refreshToken = user.refreshToken;
 				token.user = user.user;
 			}
+			// For social login, ensure we persist the image and name
+			if (
+				account &&
+				(account.provider === "google" || account.provider === "github")
+			) {
+				token.picture = user?.image;
+				token.name = user?.name;
+				// Mock tokens for social login to satisfy SessionSync and Redux
+				token.accessToken = `mock-access-token-${account.provider}`;
+				token.refreshToken = `mock-refresh-token-${account.provider}`;
+			}
 			return token;
+		},
+		async redirect({ url, baseUrl }) {
+			// If duplicate redirect or home, go to dashboard
+			if (url === "/" || url === baseUrl) {
+				return `${baseUrl}/dashboard`;
+			}
+			// Allows relative callback URLs
+			if (url.startsWith("/")) return `${baseUrl}${url}`;
+			// Allows callback URLs on the same origin
+			if (new URL(url).origin === baseUrl) return url;
+			return `${baseUrl}/dashboard`;
 		},
 		async session({ session, token }: any) {
 			session.accessToken = token.accessToken;
@@ -68,6 +103,9 @@ export const authOptions: NextAuthOptions = {
 			session.user = {
 				...session.user,
 				...token.user,
+				image: token.picture || session.user?.image,
+				name: token.name || session.user?.name,
+				profilePhoto: token.picture || session.user?.image, // Sync for Redux AuthUser compatibility
 			};
 			return session;
 		},

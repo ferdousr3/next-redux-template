@@ -1,7 +1,9 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
 import { useRef } from "react";
 import { Provider } from "react-redux";
+import SessionSync from "@/components/auth/SessionSync";
 import { store } from "./store";
 
 type AppStore = typeof store;
@@ -26,6 +28,3 @@ export default function StoreProvider({
 		</SessionProvider>
 	);
 }
-
-import { SessionProvider } from "next-auth/react";
-import SessionSync from "@/components/auth/SessionSync";

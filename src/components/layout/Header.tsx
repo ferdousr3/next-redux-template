@@ -8,8 +8,10 @@ import {
 	Search,
 	X,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
@@ -30,9 +32,10 @@ export function Header() {
 	const [isMounted, setIsMounted] = useState(false);
 	const router = useRouter();
 	const dispatch = useDispatch<AppDispatch>();
-	const { isAuthenticated, user } = useSelector(
+	const { isAuthenticated: reduxAuthenticated, user: reduxUser } = useSelector(
 		(state: RootState) => state.auth,
 	);
+	const { data: session, status } = useSession();
 
 	useEffect(() => {
 		setIsMounted(true);
@@ -40,12 +43,25 @@ export function Header() {
 
 	const handleLogout = async () => {
 		await dispatch(logout());
+		await signOut({ redirect: false });
 		router.push("/");
 	};
 
 	// Determine if we should show the authenticated view
-	// Only show if mounted AND authenticated to prevent hydration mismatch
+	// Only show if mounted AND (authenticated in Redux OR Session)
+	const isAuthenticated = reduxAuthenticated || status === "authenticated";
 	const showAuth = isMounted && isAuthenticated;
+
+	// Prioritize Session user (Social Login) then Redux user (Credentials)
+	const userDisplay = {
+		name: session?.user?.name || reduxUser?.firstName || "User",
+		image: session?.user?.image || reduxUser?.profilePhoto,
+		initial: (
+			session?.user?.name?.[0] ||
+			reduxUser?.firstName?.[0] ||
+			"U"
+		).toUpperCase(),
+	};
 
 	return (
 		<nav className="fixed top-0 w-full z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md">
@@ -88,15 +104,24 @@ export function Header() {
 								<DropdownMenuTrigger asChild>
 									<Button
 										variant="ghost"
-										className="flex items-center gap-2 rounded-none hover:bg-slate-100"
+										className="flex items-center gap-2 rounded-none hover:bg-slate-100 p-1 pr-3"
 									>
-										<div className="h-8 w-8 bg-emerald-100 flex items-center justify-center border border-emerald-200">
-											<span className="text-sm font-bold text-emerald-700 font-mono">
-												{user?.firstName?.charAt(0).toUpperCase() || "U"}
-											</span>
+										<div className="h-8 w-8 relative flex items-center justify-center border border-emerald-200 bg-emerald-100 overflow-hidden">
+											{userDisplay.image ? (
+												<Image
+													src={userDisplay.image}
+													alt={userDisplay.name}
+													fill
+													className="object-cover"
+												/>
+											) : (
+												<span className="text-sm font-bold text-emerald-700 font-mono">
+													{userDisplay.initial}
+												</span>
+											)}
 										</div>
-										<span className="text-sm font-bold text-slate-700 font-mono">
-											{user?.firstName || "User"}
+										<span className="text-sm font-bold text-slate-700 font-mono hidden lg:block">
+											{userDisplay.name}
 										</span>
 									</Button>
 								</DropdownMenuTrigger>
