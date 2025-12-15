@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { CustomFormField } from "@/components/forms/CustomFormField";
+import { CustomFormField } from "@/components/common/CustomFormField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { type ProductFormValues, productSchema } from "./productFormSchema";

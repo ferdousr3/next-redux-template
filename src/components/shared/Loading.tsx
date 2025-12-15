@@ -1,9 +1,11 @@
 import { Loader2 } from "lucide-react";
 
-interface LoadingSpinnerProps {
-	size?: "sm" | "md" | "lg";
-	className?: string;
-}
+import type {
+	LoadingButtonProps,
+	LoadingSpinnerProps,
+	PageLoadingProps,
+	TableLoadingProps,
+} from "@/types/LoadingType";
 
 const sizes = {
 	sm: "h-4 w-4",
@@ -22,12 +24,6 @@ export function LoadingSpinner({
 	);
 }
 
-interface LoadingButtonProps {
-	loading: boolean;
-	children: React.ReactNode;
-	className?: string;
-}
-
 export function LoadingButton({
 	loading,
 	children,
@@ -41,10 +37,6 @@ export function LoadingButton({
 	);
 }
 
-interface PageLoadingProps {
-	message?: string;
-}
-
 export function PageLoading({ message = "Loading..." }: PageLoadingProps) {
 	return (
 		<div className="flex flex-col items-center justify-center py-12 gap-3">
@@ -54,20 +46,13 @@ export function PageLoading({ message = "Loading..." }: PageLoadingProps) {
 	);
 }
 
-interface TableLoadingProps {
-	columns?: number;
-	rows?: number;
-}
-
 export function TableLoading({ columns = 4, rows = 5 }: TableLoadingProps) {
 	return (
 		<div className="space-y-3">
 			{Array.from({ length: rows }).map((_, i) => (
-				// biome-ignore lint/suspicious/noArrayIndexKey: Skeleton loading
 				<div key={i} className="flex gap-4">
 					{Array.from({ length: columns }).map((_, j) => (
 						<div
-							// biome-ignore lint/suspicious/noArrayIndexKey: Skeleton loading
 							key={j}
 							className="h-10 bg-muted animate-pulse rounded flex-1"
 						/>

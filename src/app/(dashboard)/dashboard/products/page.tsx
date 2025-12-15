@@ -28,14 +28,14 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
-import type { Product } from "@/lib/product/model/product.model";
+import type { Product } from "@/lib/features/product/model/product.model";
 import {
 	createProduct,
 	deleteProduct,
 	fetchProducts,
 	updateProduct,
-} from "@/lib/product/state/productActions";
-import { clearError } from "@/lib/product/state/productReducer";
+} from "@/lib/features/product/state/productActions";
+import { clearError } from "@/lib/features/product/state/productReducer";
 import type { AppDispatch, RootState } from "@/store/store";
 
 export default function ProductsManagement() {

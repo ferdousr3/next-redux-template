@@ -3,7 +3,6 @@
 export function DarkVeil() {
 	return (
 		<div className="absolute inset-0 pointer-events-none overflow-hidden bg-slate-950">
-			{/* Grain Texture */}
 			<div
 				className="absolute inset-0 opacity-[0.15]"
 				style={{
@@ -11,11 +10,10 @@ export function DarkVeil() {
 				}}
 			/>
 
-			{/* Glows */}
 			<div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
 			<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2" />
 
-			{/* Vignette */}
+			<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2" />
 			<div className="absolute inset-0 bg-radial-gradient from-transparent to-slate-950/80" />
 		</div>
 	);

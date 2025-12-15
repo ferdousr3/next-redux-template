@@ -1,5 +1,9 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Product, ProductQuery } from "../model/product.model";
+import type {
+	Product,
+	ProductQuery,
+	ProductState,
+} from "../model/product.model";
 import {
 	createProduct,
 	deleteProduct,
@@ -7,20 +11,6 @@ import {
 	fetchProducts,
 	updateProduct,
 } from "./productActions";
-
-interface ProductState {
-	products: Product[];
-	selectedProduct: Product | null;
-	categories: string[]; // legacy
-	loading: boolean;
-	creating: boolean;
-	updating: boolean;
-	deleting: string | null;
-	error: string | null;
-	query: ProductQuery;
-	total: number;
-	initialized: boolean;
-}
 
 const initialState: ProductState = {
 	products: [],

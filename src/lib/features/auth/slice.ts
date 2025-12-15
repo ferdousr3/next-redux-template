@@ -11,14 +11,7 @@ import {
 	type RegisterData,
 } from "./api";
 
-export interface AuthState {
-	user: AuthUser | null;
-	accessToken: string | null;
-	refreshToken: string | null;
-	isAuthenticated: boolean;
-	loading: boolean;
-	error: string | null;
-}
+import type { AuthState } from "./model/authModel";
 
 // Initial state must be safe for SSR (no localStorage access on init unless in effect)
 // For Redux in Next.js, we often initialize with defaults and hydrate from client.

@@ -1,11 +1,8 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Check, Eye, EyeOff, Loader2, X } from "lucide-react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { ChangePasswordForm } from "@/components/settings/ChangePasswordForm";
 import {
 	Card,
 	CardContent,
@@ -13,70 +10,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { authApi } from "@/lib/features/auth/api";
-import {
-	type ChangePasswordFormValues,
-	changePasswordSchema,
-} from "@/schemas/auth.schema";
-
-// Password requirement checker
-function PasswordRequirements({ password }: { password: string }) {
-	const requirements = [
-		{ label: "At least 8 characters", met: password.length >= 8 },
-		{ label: "One lowercase letter", met: /[a-z]/.test(password) },
-		{ label: "One uppercase letter", met: /[A-Z]/.test(password) },
-		{ label: "One number", met: /[0-9]/.test(password) },
-	];
-
-	return (
-		<div className="mt-2 space-y-1">
-			<p className="text-xs text-muted-foreground mb-1">
-				Password requirements:
-			</p>
-			{requirements.map((req, _index) => (
-				<div key={req.label} className="flex items-center gap-2 text-xs">
-					{req.met ? (
-						<Check className="h-3 w-3 text-emerald-500" />
-					) : (
-						<X className="h-3 w-3 text-muted-foreground" />
-					)}
-					<span
-						className={req.met ? "text-emerald-600" : "text-muted-foreground"}
-					>
-						{req.label}
-					</span>
-				</div>
-			))}
-		</div>
-	);
-}
+import type { ChangePasswordFormValues } from "@/schemas/auth.schema";
 
 export default function SettingsPage() {
 	const [loading, setLoading] = useState(false);
-	const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-	const [showNewPassword, setShowNewPassword] = useState(false);
-	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-	const form = useForm<ChangePasswordFormValues>({
-		resolver: zodResolver(changePasswordSchema),
-		defaultValues: {
-			currentPassword: "",
-			newPassword: "",
-			confirmNewPassword: "",
-		},
-		mode: "onChange",
-	});
-
-	const watchedNewPassword = form.watch("newPassword");
 
 	async function onSubmit(data: ChangePasswordFormValues) {
 		setLoading(true);
@@ -86,7 +24,6 @@ export default function SettingsPage() {
 				newPassword: data.newPassword,
 			});
 			toast.success("Password changed successfully!");
-			form.reset();
 		} catch (error: unknown) {
 			const err = error as { response?: { data?: { message?: string } } };
 			toast.error(err.response?.data?.message || "Failed to change password");
@@ -110,109 +47,7 @@ export default function SettingsPage() {
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-							<FormField
-								control={form.control}
-								name="currentPassword"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Current Password</FormLabel>
-										<FormControl>
-											<div className="relative">
-												<Input
-													type={showCurrentPassword ? "text" : "password"}
-													placeholder="Enter current password"
-													{...field}
-												/>
-												<button
-													type="button"
-													className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-													onClick={() =>
-														setShowCurrentPassword(!showCurrentPassword)
-													}
-												>
-													{showCurrentPassword ? (
-														<EyeOff className="h-4 w-4" />
-													) : (
-														<Eye className="h-4 w-4" />
-													)}
-												</button>
-											</div>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="newPassword"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>New Password</FormLabel>
-										<FormControl>
-											<div className="relative">
-												<Input
-													type={showNewPassword ? "text" : "password"}
-													placeholder="Enter new password"
-													{...field}
-												/>
-												<button
-													type="button"
-													className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-													onClick={() => setShowNewPassword(!showNewPassword)}
-												>
-													{showNewPassword ? (
-														<EyeOff className="h-4 w-4" />
-													) : (
-														<Eye className="h-4 w-4" />
-													)}
-												</button>
-											</div>
-										</FormControl>
-										<PasswordRequirements password={watchedNewPassword || ""} />
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="confirmNewPassword"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Confirm New Password</FormLabel>
-										<FormControl>
-											<div className="relative">
-												<Input
-													type={showConfirmPassword ? "text" : "password"}
-													placeholder="Confirm new password"
-													{...field}
-												/>
-												<button
-													type="button"
-													className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-													onClick={() =>
-														setShowConfirmPassword(!showConfirmPassword)
-													}
-												>
-													{showConfirmPassword ? (
-														<EyeOff className="h-4 w-4" />
-													) : (
-														<Eye className="h-4 w-4" />
-													)}
-												</button>
-											</div>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<Button type="submit" disabled={loading}>
-								{loading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-								{loading ? "Changing Password..." : "Change Password"}
-							</Button>
-						</form>
-					</Form>
+					<ChangePasswordForm onSubmit={onSubmit} loading={loading} />
 				</CardContent>
 			</Card>
 		</div>

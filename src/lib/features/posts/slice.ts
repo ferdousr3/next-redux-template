@@ -7,6 +7,7 @@ import type {
 	Post,
 	PostInput,
 	PostQuery,
+	PostState,
 } from "@/lib/features/posts/model/postModel";
 import { postApi } from "./api";
 
@@ -79,18 +80,6 @@ export const deletePost = createAsyncThunk(
 		}
 	},
 );
-
-interface PostState {
-	posts: Post[];
-	selectedPost: Post | null;
-	loading: boolean;
-	creating: boolean;
-	updating: boolean;
-	deleting: string | null;
-	error: string | null;
-	query: PostQuery;
-	initialized: boolean;
-}
 
 const initialState: PostState = {
 	posts: [],

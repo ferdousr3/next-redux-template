@@ -23,19 +23,19 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import type { Product } from "@/lib/product/model/product.model";
-import { ProductForm } from "@/lib/product/ProductForm";
-import type { ProductFormValues } from "@/lib/product/productFormSchema";
+import type { Product } from "@/lib/features/product/model/product.model";
+import { ProductForm } from "@/lib/features/product/ProductForm";
+import type { ProductFormValues } from "@/lib/features/product/productFormSchema";
 import {
 	createProduct,
 	deleteProduct,
 	fetchProducts,
 	updateProduct,
-} from "@/lib/product/state/productActions";
+} from "@/lib/features/product/state/productActions";
 import {
 	setQuery,
 	setSelectedProduct,
-} from "@/lib/product/state/productReducer";
+} from "@/lib/features/product/state/productReducer";
 import type { AppDispatch, RootState } from "@/store/store";
 
 export default function ProductsPage() {

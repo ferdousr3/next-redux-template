@@ -24,10 +24,7 @@ const sidebarItems = [
 	{ name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
-interface SidebarProps {
-	open: boolean;
-	onClose: () => void;
-}
+import type { SidebarProps } from "@/types/SidebarType";
 
 export function Sidebar({ open, onClose }: SidebarProps) {
 	const pathname = usePathname();

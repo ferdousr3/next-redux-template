@@ -2,11 +2,11 @@ import { AlertCircle, RefreshCw, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-interface ErrorMessageProps {
-	message: string;
-	onRetry?: () => void;
-	className?: string;
-}
+import type {
+	ErrorCardProps,
+	ErrorMessageProps,
+	PageErrorProps,
+} from "@/types/ErrorType";
 
 export function ErrorMessage({
 	message,
@@ -33,12 +33,6 @@ export function ErrorMessage({
 	);
 }
 
-interface ErrorCardProps {
-	title?: string;
-	message: string;
-	onRetry?: () => void;
-}
-
 export function ErrorCard({
 	title = "Something went wrong",
 	message,
@@ -63,11 +57,6 @@ export function ErrorCard({
 			</CardContent>
 		</Card>
 	);
-}
-
-interface PageErrorProps {
-	message?: string;
-	onRetry?: () => void;
 }
 
 export function PageError({

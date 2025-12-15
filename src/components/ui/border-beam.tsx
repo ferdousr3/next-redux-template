@@ -14,8 +14,9 @@ interface BorderBeamProps {
 export function BorderBeam({
 	duration = 15,
 	borderWidth = 1.5,
-	colorFrom = "#3b82f6", // blue-500
-	colorTo = "#a855f7", // purple-500
+
+	colorFrom = "#3b82f6",
+	colorTo = "#a855f7",
 	delay = 0,
 	className = "",
 }: BorderBeamProps) {
@@ -65,7 +66,7 @@ export function BorderBeam({
         }
         .animate-border-beam {
           animation: border-beam var(--duration) linear infinite;
-          offset-path: rect(0 auto auto 0 round calc(1.5rem - var(--border-width))); /* Adjust rounding based on parent */
+          offset-path: rect(0 auto auto 0 round calc(1.5rem - var(--border-width)));
         }
       `}</style>
 		</div>

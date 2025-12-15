@@ -30,3 +30,16 @@ export interface NoteFormData {
 	note: Note | null;
 	caseId?: string;
 }
+
+export interface NotesState {
+	notes: Note[];
+	selectedNote: Note | null;
+	loading: boolean;
+	creating: boolean;
+	updating: boolean;
+	deleting: string | null;
+	error: string | null;
+	query: NoteQuery;
+	total: number;
+	initialized: boolean;
+}

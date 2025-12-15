@@ -47,12 +47,9 @@ export function Header() {
 		router.push("/");
 	};
 
-	// Determine if we should show the authenticated view
-	// Only show if mounted AND (authenticated in Redux OR Session)
 	const isAuthenticated = reduxAuthenticated || status === "authenticated";
 	const showAuth = isMounted && isAuthenticated;
 
-	// Prioritize Session user (Social Login) then Redux user (Credentials)
 	const userDisplay = {
 		name: session?.user?.name || reduxUser?.firstName || "User",
 		image: session?.user?.image || reduxUser?.profilePhoto,
@@ -72,9 +69,7 @@ export function Header() {
 					</span>
 				</Link>
 
-				{/* RIGHT SIDE CONTAINER: Nav Links + Actions */}
 				<div className="hidden md:flex items-center gap-8">
-					{/* Navigation Links - Now Right Aligned */}
 					<div className="flex items-center gap-6 text-sm font-medium text-slate-500">
 						{navigation.map((item) => (
 							<Link
@@ -89,9 +84,7 @@ export function Header() {
 
 					<div className="w-px h-6 bg-slate-200" />
 
-					{/* Actions */}
 					<div className="flex items-center gap-4">
-						{/* Search Icon */}
 						<button
 							type="button"
 							className="p-2 text-slate-400 hover:text-slate-900 transition-colors"
@@ -176,7 +169,6 @@ export function Header() {
 					</div>
 				</div>
 
-				{/* Mobile menu button */}
 				<button
 					type="button"
 					className="md:hidden p-2 text-slate-600"
@@ -190,7 +182,6 @@ export function Header() {
 				</button>
 			</div>
 
-			{/* Mobile menu */}
 			{mobileMenuOpen && (
 				<div className="md:hidden border-t border-slate-200 bg-white">
 					<div className="px-6 py-4 space-y-4">

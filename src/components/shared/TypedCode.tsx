@@ -2,13 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface TypedCodeProps {
-	code: string; // The full code snippet to type out
-	speed?: number; // Typing speed in ms (default: 30)
-	startDelay?: number; // Delay before typing starts (in ms), or specific logic
-	className?: string;
-	triggerInView?: boolean; // If true, only start typing when element is in view
-}
+import type { TypedCodeProps } from "@/types/TypedCodeType";
 
 export function TypedCode({
 	code,
@@ -21,7 +15,6 @@ export function TypedCode({
 	const [started, setStarted] = useState(false);
 	const elementRef = useRef<HTMLDivElement>(null);
 
-	// Handle In-View Trigger
 	useEffect(() => {
 		if (!triggerInView) {
 			setStarted(true);
@@ -42,7 +35,6 @@ export function TypedCode({
 		return () => observer.disconnect();
 	}, [triggerInView]);
 
-	// Handle Typing Logic
 	useEffect(() => {
 		if (!started) return;
 
@@ -56,8 +48,6 @@ export function TypedCode({
 					return;
 				}
 
-				// Handle multiple characters for faster "burst" typing if beneficial, or 1 by 1
-				// For now, pure 1 by 1
 				setDisplayedText((prev) => prev + code[currentIndex]);
 				currentIndex++;
 			}, speed);
@@ -71,8 +61,6 @@ export function TypedCode({
 
 		return () => {
 			clearTimeout(timeoutId);
-			// Note: The interval cleanup is a bit tricky here if strictly effect-bound,
-			// but given the simple nature, a re-render reset is okay.
 		};
 	}, [started, code, speed, startDelay]);
 

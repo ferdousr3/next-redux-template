@@ -7,21 +7,9 @@ import type {
 	Note,
 	NoteQuery,
 	NotesInput,
+	NotesState,
 } from "@/lib/features/notes/model/noteModel";
 import { notesApi } from "./api";
-
-interface NotesState {
-	notes: Note[];
-	selectedNote: Note | null;
-	loading: boolean;
-	creating: boolean;
-	updating: boolean;
-	deleting: string | null;
-	error: string | null;
-	query: NoteQuery;
-	total: number;
-	initialized: boolean;
-}
 
 const initialState: NotesState = {
 	notes: [],

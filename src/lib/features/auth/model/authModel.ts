@@ -45,3 +45,12 @@ export interface AuthResponse {
 	refreshToken: string;
 	user: AuthUser;
 }
+
+export interface AuthState {
+	user: AuthUser | null;
+	accessToken: string | null;
+	refreshToken: string | null;
+	isAuthenticated: boolean;
+	loading: boolean;
+	error: string | null;
+}

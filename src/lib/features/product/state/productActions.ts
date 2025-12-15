@@ -6,7 +6,6 @@ import type {
 } from "../model/product.model";
 import { productApi } from "../productApi";
 
-// Thunks
 export const fetchProducts = createAsyncThunk(
 	"products/fetchAll",
 	async (query: ProductQuery | undefined, { rejectWithValue }) => {
@@ -78,7 +77,6 @@ export const deleteProduct = createAsyncThunk(
 export const fetchCategories = createAsyncThunk(
 	"products/fetchCategories",
 	async (_unused, { rejectWithValue }) => {
-		// Placeholder - assuming similar API structure if needed
 		return [];
 	},
 );

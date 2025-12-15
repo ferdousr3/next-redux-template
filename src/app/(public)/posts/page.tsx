@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
-import { PostForm } from "@/components/forms/PostForm";
 import { DeleteConfirmDialog } from "@/components/shared/ConfirmDialog";
 import { PostListSkeleton } from "@/components/shared/PostSkeleton";
 import { Button } from "@/components/ui/button";
@@ -23,6 +22,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import { PostForm } from "@/lib/features/posts/components/PostForm";
 import type { Post } from "@/lib/features/posts/model/postModel";
 import {
 	createPost,

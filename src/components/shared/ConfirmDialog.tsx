@@ -10,17 +10,10 @@ import {
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-interface ConfirmDialogProps {
-	open: boolean;
-	onOpenChange: (open: boolean) => void;
-	title?: string;
-	description?: string;
-	confirmText?: string;
-	cancelText?: string;
-	onConfirm: () => void | Promise<void>;
-	loading?: boolean;
-	variant?: "default" | "destructive";
-}
+import type {
+	ConfirmDialogProps,
+	DeleteConfirmDialogProps,
+} from "@/types/ConfirmDialogType";
 
 export function ConfirmDialog({
 	open,
@@ -62,14 +55,6 @@ export function ConfirmDialog({
 			</AlertDialogContent>
 		</AlertDialog>
 	);
-}
-
-interface DeleteConfirmDialogProps {
-	open: boolean;
-	onOpenChange: (open: boolean) => void;
-	itemName?: string;
-	onConfirm: () => void | Promise<void>;
-	loading?: boolean;
 }
 
 export function DeleteConfirmDialog({

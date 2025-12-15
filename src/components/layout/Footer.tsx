@@ -13,7 +13,6 @@ export function Footer() {
 		<footer className="bg-slate-50 border-t border-slate-200 pt-20 pb-12">
 			<div className="max-w-7xl mx-auto px-6">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-					{/* Brand Column */}
 					<div>
 						<Link href="/" className="flex items-center gap-2 mb-6">
 							<span className="text-slate-900 font-bold tracking-tighter text-3xl font-mono">
@@ -46,7 +45,6 @@ export function Footer() {
 						</div>
 					</div>
 
-					{/* Courses */}
 					<div>
 						<h4 className="text-lg font-bold text-slate-900 mb-6">Courses</h4>
 						<ul className="space-y-4 text-sm text-slate-500">
@@ -85,7 +83,6 @@ export function Footer() {
 						</ul>
 					</div>
 
-					{/* Community */}
 					<div>
 						<h4 className="text-lg font-bold text-slate-900 mb-6">Community</h4>
 						<ul className="space-y-4 text-sm text-slate-500">
@@ -124,7 +121,6 @@ export function Footer() {
 						</ul>
 					</div>
 
-					{/* Contact */}
 					<div>
 						<h4 className="text-lg font-bold text-slate-900 mb-6">
 							Get in Touch
@@ -146,7 +142,6 @@ export function Footer() {
 					</div>
 				</div>
 
-				{/* Bottom Bar */}
 				<div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium">
 					<p className="text-slate-400">
 						© {new Date().getFullYear()} Codian. All rights reserved.

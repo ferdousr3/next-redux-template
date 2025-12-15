@@ -17,3 +17,15 @@ export interface PostQuery {
 	limit?: number;
 	published?: boolean;
 }
+
+export interface PostState {
+	posts: Post[];
+	selectedPost: Post | null;
+	loading: boolean;
+	creating: boolean;
+	updating: boolean;
+	deleting: string | null;
+	error: string | null;
+	query: PostQuery;
+	initialized: boolean;
+}

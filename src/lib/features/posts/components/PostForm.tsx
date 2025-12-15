@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { type PostFormValues, postSchema } from "@/schemas/post.schema";
-import { CustomFormField } from "./CustomFormField";
+import { CustomFormField } from "../../../../components/common/CustomFormField";
 
 interface PostFormProps {
 	initialData?: PostFormValues;
@@ -30,7 +30,6 @@ export function PostForm({
 		},
 	});
 
-	// Reset form when initialData changes (e.g. switching between create and edit)
 	useEffect(() => {
 		if (initialData) {
 			form.reset(initialData);

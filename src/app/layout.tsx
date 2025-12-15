@@ -5,7 +5,7 @@ import {
 	JetBrains_Mono,
 	Space_Mono,
 } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import StoreProvider from "@/store/StoreProvider";
 
 const geistSans = Geist({

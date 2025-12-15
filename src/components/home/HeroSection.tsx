@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 export function HeroSection() {
 	return (
 		<section className="relative overflow-hidden bg-white text-slate-900 pt-24 pb-16 lg:pt-40 lg:pb-32">
-			{/* Background Decor */}
 			<div className="absolute inset-0 z-0 pointer-events-none">
 				<div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 blur-3xl opacity-50" />
 				<div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-emerald-100 to-teal-100 blur-3xl opacity-50" />
@@ -24,7 +23,6 @@ export function HeroSection() {
 
 			<div className="container relative z-10 px-8 lg:px-12 mx-auto">
 				<div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-					{/* Text Content */}
 					<motion.div
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -76,7 +74,6 @@ export function HeroSection() {
 						</div>
 					</motion.div>
 
-					{/* Visual Content */}
 					<motion.div
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
@@ -86,7 +83,6 @@ export function HeroSection() {
 						<div className="relative group">
 							<div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-purple-500/20 rounded-3xl blur-2xl transition-opacity opacity-75 group-hover:opacity-100" />
 
-							{/* Floating Cards Visualization */}
 							<div className="absolute top-6 -left-8 z-20 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white/50 animate-float-slow">
 								<div className="flex items-center gap-3">
 									<div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600">
@@ -117,11 +113,9 @@ export function HeroSection() {
 								</div>
 							</div>
 
-							{/* Gradient Block */}
 							<div className="relative rounded-3xl overflow-hidden bg-slate-950 aspect-[4/3] shadow-2xl ring-1 ring-slate-900/10 transition-transform duration-500 hover:scale-[1.01]">
 								<div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black" />
 
-								{/* Code Mockup */}
 								<div className="absolute inset-4 bg-[#0B1120] rounded-2xl overflow-hidden border border-slate-800/60 shadow-inner">
 									<div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800/50 bg-[#0F172A]">
 										<div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
