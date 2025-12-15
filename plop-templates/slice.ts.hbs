@@ -1,0 +1,27 @@
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { {{pascalCase name}}State } from "./model/{{camelCase name}}Model";
+
+const initialState: {{pascalCase name}}State = {
+	data: null,
+	isLoading: false,
+	error: null,
+};
+
+const {{camelCase name}}Slice = createSlice({
+	name: "{{camelCase name}}",
+	initialState,
+	reducers: {
+		set{{pascalCase name}}Data: (state, action: PayloadAction<any>) => {
+			state.data = action.payload;
+		},
+		set{{pascalCase name}}Loading: (state, action: PayloadAction<boolean>) => {
+			state.isLoading = action.payload;
+		},
+		set{{pascalCase name}}Error: (state, action: PayloadAction<string | null>) => {
+			state.error = action.payload;
+		},
+	},
+});
+
+export const { set{{pascalCase name}}Data, set{{pascalCase name}}Loading, set{{pascalCase name}}Error } = {{camelCase name}}Slice.actions;
+export default {{camelCase name}}Slice.reducer;

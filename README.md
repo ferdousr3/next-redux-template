@@ -95,3 +95,28 @@ Run the configured linter to check for code quality issues:
 ```bash
 npm run lint
 ```
+
+## ⚡ Code Generation
+
+We use **Plop.js** to automate the creation of files and ensure consistency.
+
+**Generate Page & Type:**
+```bash
+npm run g -- f <Name> -t
+# Example: npm run g -- f Dashboard -t
+```
+Creates:
+- `src/app/<name>/page.tsx`
+- `src/types/<Name>Type.ts`
+
+**Generate Feature Slice & Store:**
+```bash
+npm run g -- f <Name> -m -store
+# Example: npm run g -- f Analytics -m -store
+```
+Creates:
+- `src/app/<name>/page.tsx`
+- `src/lib/features/<name>/slice.ts`
+- `src/lib/features/<name>/api.ts`
+- `src/lib/features/<name>/model/<name>Model.ts`
+
